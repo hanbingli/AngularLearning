@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Recipe } from '../recipe.model'
+import { RecipeService } from '../recipe.service'
 
 @Component({
   selector: 'app-recipe-list',
@@ -7,15 +9,19 @@ import { Recipe } from '../recipe.model'
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-  recipes: Recipe[] = [  //规定recipes变量使用model Recipe，并且是数列
-  new Recipe('A Test Recipe', 'only a test', 'https://media.chefdehome.com/740/0/0/ratatouille/ratatouille-casserole.jpg'),
-  new Recipe('A Test Recipe', 'only a test', 'https://media.chefdehome.com/740/0/0/ratatouille/ratatouille-casserole.jpg'),
-]; 
+  // @Output() recipeWasSelected = new EventEmitter<Recipe>();
+  recipes:Recipe[]
+
   
+  
+  constructor(private recipeService:RecipeService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    this.recipes = this.recipeService.getRecipes()
   }
 
+  // onRecipeSelected(recipe:Recipe){
+  //   this.recipeWasSelected.emit(recipe)
+  // }
+  //转去服务了
 }
