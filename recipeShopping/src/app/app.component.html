@@ -1,12 +1,15 @@
-<app-header (featureSelected)="onNavigate($event)" ></app-header>
+<app-header ></app-header>
 <!--听子组件里发出的featureSelected 变量， 调用函数onNavigate来转化成自己变量
 //$event 永远指向事件？？？？？？
 -->
 <div class="container">
     <div class="row">
        <div class="col-md-12">
-         <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
-         <app-shopping-list *ngIf="loadedFeature !=='recipe'" ></app-shopping-list>
+         <router-outlet></router-outlet>
+
+         <!-- <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
+         <app-shopping-list *ngIf="loadedFeature !=='recipe'" ></app-shopping-list> -->
+         <!-- 不用if用router替代 -->
        </div>
     </div>
 </div>

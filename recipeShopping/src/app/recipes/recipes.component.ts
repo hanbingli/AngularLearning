@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from './recipe.model';
+
 import { RecipeService } from './recipe.service';
 
 
@@ -10,18 +10,18 @@ import { RecipeService } from './recipe.service';
   providers:[RecipeService]
 })
 export class RecipesComponent implements OnInit {
-  selectedRecipe:Recipe;
+  // selectedRecipe:Recipe;
 
-  constructor(private recipeService: RecipeService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.recipeService.recipeSelected
-      .subscribe(
-        (recipe:Recipe) =>{  //会接受到eventEmitter发出来的recipe， 
-          this.selectedRecipe = recipe   //将selectedRecipe 设置成收来的Recipe
-        }
+    // this.recipeService.recipeSelected
+    //   .subscribe(
+    //     (recipe:Recipe) =>{  //会接受到eventEmitter发出来的recipe， 
+    //       this.selectedRecipe = recipe   //将selectedRecipe 设置成收来的Recipe
+    //     }
 
-      );
+    //   );
   }
 
 
