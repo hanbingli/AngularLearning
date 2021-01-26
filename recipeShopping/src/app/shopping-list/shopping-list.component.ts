@@ -22,18 +22,30 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     this.ingredients = this.slService.getIngredients();
      this.subscription =  this.slService.ingredientsChanged
       .subscribe(  //订阅ingredienchange
-        (ingredients: Ingredient[]) =>{
-          this.ingredients = this.ingredients
+        (ingredients: Ingredient[]) => {
+          this.ingredients = ingredients
 
         }
       );
   }
+
 
   // onIngredientAdded(ingredient:Ingredient){
   //   this.ingredients.push(ingredient)
   //   console.log(this.ingredients)
 
   // }
+
+
+  onEditItem(index: number){
+    this.slService.startedEditing.next(index);  //将index发送给subject以备监听
+
+  }
+
+
+
+
+
   ngOnDestroy():void {
     this.subscription.unsubscribe();
   }
