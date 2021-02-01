@@ -5,12 +5,18 @@
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
             <li routerLinkActive="active"><a routerLink="/recipes" >Recipes</a></li>
+            <li routerLinkActive="active" *ngIf="!isAuthenticated">
+                <a routerLink="/auth">Authenticate</a>
+              </li>
     <!-- 当链接被选中时套用active的css -->
             <li routerLinkActive="active"><a routerLink="/shopping-list"  >Shopping List</a></li>
             <!-- <li><a href="#" (click) ="onSelect('recipe')" >Recipes</a></li>
             <li><a href="#" (click) ="onSelect('shopping-list')" >Shopping List</a></li> -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="isAuthenticated">
+                <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
+              </li>
             <li class="dropdown" appDropdown >
                 <a 
                 style="cursor: pointer"
@@ -18,8 +24,8 @@
                 role="button"
                 >Manage <span class="caret"></span> </a>
                 <ul class="dropdown-menu">
-                    <li><a style="cursor: pointer">Save Data</a></li>
-                    <li><a style="cursor: pointer">Fetch data</a></li>
+                    <li><a style="cursor: pointer" (click)="onSaveData()">Save Data</a></li>
+                    <li><a style="cursor: pointer" (click)="onFetchData()">Fetch data</a></li>
                 </ul>
             </li>
             
